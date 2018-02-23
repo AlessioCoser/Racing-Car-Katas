@@ -2,9 +2,17 @@ package tddmicroexercises.tirepressuremonitoringsystem;
 
 
 import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
 public class TestAlarm {
+
+    @Mock Sensor sensor;
 
     @Test
     public void is_off_after_initialization() {
@@ -14,7 +22,7 @@ public class TestAlarm {
 
     @Test
     public void is_off_when_pressure_within_threshold() {
-        Sensor sensor = new SensorWithPressure18();
+        when(sensor.popNextPressurePsiValue()).thenReturn((double) 18);
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
@@ -24,25 +32,11 @@ public class TestAlarm {
 
     @Test
     public void is_on_when_pressure_is_out_threshold() {
-        Sensor sensor = new SensorWithPressure0();
+        when(sensor.popNextPressurePsiValue()).thenReturn((double) 0);
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
 
         assertTrue(alarm.isAlarmOn());
-    }
-
-    private class SensorWithPressure18 extends RealSensor {
-        @Override
-        public double popNextPressurePsiValue() {
-            return 18;
-        }
-    }
-
-    private class SensorWithPressure0 extends RealSensor {
-        @Override
-        public double popNextPressurePsiValue() {
-            return 0;
-        }
     }
 }
