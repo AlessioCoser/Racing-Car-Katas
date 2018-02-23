@@ -16,7 +16,7 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_empty_string_from_an_empty_file() throws IOException {
-        FileTextReader reader = new EmptyFileTextReader();
+        TextReader reader = new EmptyTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
         assertEquals("", converter.convertToHtml());
@@ -24,31 +24,29 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_converted_html_from_a_file_with_some_text() throws IOException {
-        FileTextReader reader = new FullFileTextReader();
+        TextReader reader = new FullTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
     }
 
-    private class EmptyFileTextReader extends FileTextReader {
-        public EmptyFileTextReader() {
-            super("");
-        }
-
-        @Override
+    private class EmptyTextReader implements TextReader {
         public String read() throws IOException {
             return "";
         }
+
+        public String getName() {
+            return "empty";
+        }
     }
 
-    private class FullFileTextReader extends FileTextReader {
-        public FullFileTextReader() {
-            super("");
-        }
-
-        @Override
+    private class FullTextReader implements TextReader {
         public String read() throws IOException {
             return "first line\nsecond 'line'";
+        }
+
+        public String getName() {
+            return "full";
         }
     }
 }
