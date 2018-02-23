@@ -20,7 +20,11 @@ public class HtmlTextConverter
     }
 
     public String convertToHtml() throws IOException{
-        List<String> lines = readLines();
+        String text = textReader.read();
+
+        if (text.equals("")) return "";
+
+        List<String> lines = asList(text.split("\\n"));
 
 		String html = "";
 		for (String line : lines) {
@@ -29,14 +33,6 @@ public class HtmlTextConverter
 		}
 
 	    return html;
-    }
-
-    protected List<String> readLines() throws IOException {
-        String text = textReader.read();
-
-        if(text.equals("")) return new ArrayList<String>();
-
-        return asList(text.split("\\n"));
     }
 
     public String getFilename() {
