@@ -8,6 +8,7 @@ public class TicketDispenserTest {
 
     public static final TurnTicket FIRST_TICKET = new TurnTicket(0);
     public static final TurnTicket SECOND_TICKET = new TurnTicket(1);
+    public static final TurnNumberSequence SEQUENCE = new TurnNumberSequence();
 
     @Test
     public void first_turn_ticket_should_be_0() {
@@ -20,7 +21,7 @@ public class TicketDispenserTest {
 
     @Test
     public void second_turn_ticket_should_be_1() {
-        TicketDispenser ticketDispenser = new TicketDispenser();
+        TicketDispenser ticketDispenser = new TicketDispenser(SEQUENCE);
 
         ticketDispenser.getTurnTicket();
         TurnTicket turnTicket = ticketDispenser.getTurnTicket();

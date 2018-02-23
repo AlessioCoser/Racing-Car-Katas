@@ -2,6 +2,17 @@ package tddmicroexercises.turnticketdispenser;
 
 public class TicketDispenser
 {
+
+    private TurnNumberSequence turnNumberSequence;
+
+    public TicketDispenser(TurnNumberSequence turnNumberSequence) {
+        this.turnNumberSequence = turnNumberSequence;
+    }
+
+    public TicketDispenser() {
+        this(new TurnNumberSequence());
+    }
+
     public TurnTicket getTurnTicket()
     {
         int newTurnNumber = nextTurnNumber();
@@ -10,6 +21,6 @@ public class TicketDispenser
     }
 
     private int nextTurnNumber() {
-        return new TurnNumberSequence().nextTurnNumber();
+        return turnNumberSequence.nextTurnNumber();
     }
 }
