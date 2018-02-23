@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FileTextReader {
+public class FileTextReader implements TextReader {
     private String fullFilenameWithPath;
 
     public FileTextReader(String fullFilenameWithPath) {
         this.fullFilenameWithPath = fullFilenameWithPath;
     }
 
-
+    @Override
     public String read() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
         StringBuilder text = new StringBuilder();
@@ -28,7 +28,8 @@ public class FileTextReader {
         return text.toString();
     }
 
-    public String getFilename() {
+    @Override
+    public String getName() {
         return fullFilenameWithPath;
     }
 }
