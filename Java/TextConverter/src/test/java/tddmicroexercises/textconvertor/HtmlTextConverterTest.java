@@ -15,7 +15,7 @@ public class HtmlTextConverterTest {
     }
 
     @Test
-    public void returns_empty_string_from_an_empty_file() throws IOException {
+    public void returns_empty_string_from_an_empty_reader() throws IOException {
         TextReader reader = new EmptyTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
@@ -23,7 +23,7 @@ public class HtmlTextConverterTest {
     }
 
     @Test
-    public void returns_converted_html_from_a_file_with_some_text() throws IOException {
+    public void returns_converted_html_from_a_reader_with_some_text() throws IOException {
         TextReader reader = new FullTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
