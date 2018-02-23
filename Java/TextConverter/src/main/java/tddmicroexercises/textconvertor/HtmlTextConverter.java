@@ -1,8 +1,8 @@
 package tddmicroexercises.textconvertor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -24,15 +24,13 @@ public class HtmlTextConverter
 
         if (text.equals("")) return "";
 
-        List<String> lines = asList(text.split("\\n"));
+        return linesFrom(text).stream()
+                .map(StringEscapeUtils::escapeHtml)
+                .collect(Collectors.joining("<br />")) + "<br />";
+    }
 
-		String html = "";
-		for (String line : lines) {
-			html += StringEscapeUtils.escapeHtml(line);
-			html += "<br />";
-		}
-
-	    return html;
+    protected List<String> linesFrom(String text) {
+        return asList(text.split("\\n"));
     }
 
     public String getFilename() {
