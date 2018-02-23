@@ -9,7 +9,11 @@ public class HtmlTextConverter
 
     public HtmlTextConverter(String fullFilenameWithPath)
     {
-        textReader = new TextReader(fullFilenameWithPath);
+        this(new TextReader(fullFilenameWithPath));
+    }
+
+    public HtmlTextConverter(TextReader reader) {
+        this.textReader = reader;
     }
 
     public String convertToHtml() throws IOException{
