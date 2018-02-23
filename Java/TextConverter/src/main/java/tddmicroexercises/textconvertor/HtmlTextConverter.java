@@ -1,7 +1,10 @@
 package tddmicroexercises.textconvertor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class HtmlTextConverter
 {
@@ -29,7 +32,11 @@ public class HtmlTextConverter
     }
 
     protected List<String> readLines() throws IOException {
-        return textReader.readLines();
+        String text = textReader.read();
+
+        if(text.equals("")) return new ArrayList<String>();
+
+        return asList(text.split("\\n"));
     }
 
     public String getFilename() {

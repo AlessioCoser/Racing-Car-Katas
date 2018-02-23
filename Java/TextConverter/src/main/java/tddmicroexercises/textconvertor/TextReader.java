@@ -5,12 +5,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TextReader {
     private String fullFilenameWithPath;
 
     public TextReader(String fullFilenameWithPath) {
         this.fullFilenameWithPath = fullFilenameWithPath;
+    }
+
+
+    public String read() throws IOException {
+        return readLines().stream().collect(Collectors.joining("\n"));
     }
 
     public List<String> readLines() throws IOException {
