@@ -26,7 +26,7 @@ public class Alarm
     private boolean isOutOfRange(double pressure) {
         double highPressureThreshold = 21;
         double lowPressureThreshold = 17;
-        
+
         return pressure < lowPressureThreshold || pressure > highPressureThreshold;
     }
 

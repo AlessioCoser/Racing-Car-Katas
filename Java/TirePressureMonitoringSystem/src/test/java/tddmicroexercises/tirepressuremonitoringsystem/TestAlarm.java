@@ -12,6 +12,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class TestAlarm {
 
+    public static final double WITHIN_RANGE_PRESSURE = 18;
+    public static final double OUT_OF_RANGE_PRESSURE = 0;
     @Mock Sensor sensor;
 
     @Test
@@ -22,7 +24,7 @@ public class TestAlarm {
 
     @Test
     public void is_off_when_pressure_within_threshold() {
-        when(sensor.popNextPressurePsiValue()).thenReturn((double) 18);
+        when(sensor.popNextPressurePsiValue()).thenReturn(WITHIN_RANGE_PRESSURE);
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
@@ -32,7 +34,7 @@ public class TestAlarm {
 
     @Test
     public void is_on_when_pressure_is_out_threshold() {
-        when(sensor.popNextPressurePsiValue()).thenReturn((double) 0);
+        when(sensor.popNextPressurePsiValue()).thenReturn(OUT_OF_RANGE_PRESSURE);
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
