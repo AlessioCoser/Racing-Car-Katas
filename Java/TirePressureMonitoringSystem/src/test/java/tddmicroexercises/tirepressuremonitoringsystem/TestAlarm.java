@@ -14,7 +14,7 @@ public class TestAlarm {
 
     @Test
     public void is_off_when_pressure_within_threshold() {
-        RealSensor sensor = new SensorWithPressure18();
+        Sensor sensor = new SensorWithPressure18();
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
@@ -24,7 +24,7 @@ public class TestAlarm {
 
     @Test
     public void is_on_when_pressure_is_out_threshold() {
-        RealSensor sensor = new SensorWithPressure0();
+        Sensor sensor = new SensorWithPressure0();
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
