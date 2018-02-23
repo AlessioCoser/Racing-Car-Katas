@@ -18,13 +18,6 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_empty_string_from_an_empty_file() throws IOException {
-        HtmlTextConverter converter = new HtmlTextConverter("empty");
-
-        assertEquals("", converter.convertToHtml());
-    }
-    
-    @Test
-    public void new__returns_empty_string_from_an_empty_file() throws IOException {
         HtmlTextConverter converter = new EmptyHtmlTextConverter("empty");
 
         assertEquals("", converter.convertToHtml());
@@ -36,7 +29,6 @@ public class HtmlTextConverterTest {
 
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
     }
-
 
     private class EmptyHtmlTextConverter extends HtmlTextConverter {
         public EmptyHtmlTextConverter(String path) {
