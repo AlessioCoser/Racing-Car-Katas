@@ -8,4 +8,8 @@ public class TurnNumberSequence
     {
         return _turnNumber++;
     }
+
+    public int nextTurnNumber() {
+        return TurnNumberSequence.getNextTurnNumber();
+    }
 }

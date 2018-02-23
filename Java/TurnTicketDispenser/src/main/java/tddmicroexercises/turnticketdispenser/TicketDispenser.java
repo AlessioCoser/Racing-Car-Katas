@@ -4,9 +4,12 @@ public class TicketDispenser
 {
     public TurnTicket getTurnTicket()
     {
-        int newTurnNumber = TurnNumberSequence.getNextTurnNumber();
-        TurnTicket newTurnTicket = new TurnTicket(newTurnNumber);
+        int newTurnNumber = nextTurnNumber();
 
-        return newTurnTicket;
+        return new TurnTicket(newTurnNumber);
+    }
+
+    private int nextTurnNumber() {
+        return new TurnNumberSequence().nextTurnNumber();
     }
 }
