@@ -6,10 +6,12 @@ import java.util.List;
 public class HtmlTextConverter
 {
     private String fullFilenameWithPath;
+    private TextReader textReader;
 
     public HtmlTextConverter(String fullFilenameWithPath)
     {
         this.fullFilenameWithPath = fullFilenameWithPath;
+        textReader = new TextReader(fullFilenameWithPath);
     }
 
     public String convertToHtml() throws IOException{
@@ -25,7 +27,7 @@ public class HtmlTextConverter
     }
 
     protected List<String> readLines() throws IOException {
-        return new TextReader(fullFilenameWithPath).readLine();
+        return textReader.readLine();
     }
 
     public String getFilename() {
