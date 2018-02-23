@@ -17,14 +17,15 @@ public class TextReader {
 
     public String read() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
-        String text = "";
+        StringBuilder text = new StringBuilder();
 
         String line = reader.readLine();
         while (line != null) {
-            text += line;
+            text.append(line);
             line = reader.readLine();
         }
-        return text;
+
+        return text.toString();
     }
 
     public String getFilename() {
