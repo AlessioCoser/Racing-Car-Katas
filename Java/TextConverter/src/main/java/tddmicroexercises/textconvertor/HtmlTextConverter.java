@@ -18,8 +18,19 @@ public class HtmlTextConverter
     }
 
     public String convertToHtml() throws IOException{
-    
-	    BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
+        List<String> lines = readLines();
+
+		String html = "";
+		for (String line : lines) {
+			html += StringEscapeUtils.escapeHtml(line);
+			html += "<br />";
+		}
+
+	    return html;
+    }
+
+    protected List<String> readLines() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
         List<String> lines = new ArrayList<String>();
 
         String line = reader.readLine();
@@ -27,17 +38,10 @@ public class HtmlTextConverter
 			lines.add(line);
 			line = reader.readLine();
 		}
-
-		String html = "";
-		for (String l : lines) {
-			html += StringEscapeUtils.escapeHtml(l);
-			html += "<br />";
-		}
-
-	    return html;
+        return lines;
     }
 
-	public String getFilename() {
-		return this.fullFilenameWithPath;
+    public String getFilename() {
+		return fullFilenameWithPath;
 	}
 }
