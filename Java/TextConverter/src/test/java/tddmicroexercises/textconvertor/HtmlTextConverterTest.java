@@ -25,13 +25,6 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_converted_html_from_a_file_with_some_text() throws IOException {
-        HtmlTextConverter converter = new HtmlTextConverter("full");
-
-        assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
-    }
-
-    @Test
-    public void new__returns_converted_html_from_a_file_with_some_text() throws IOException {
         HtmlTextConverter converter = new FullHtmlTextConverter("full");
 
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
