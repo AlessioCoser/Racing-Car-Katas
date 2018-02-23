@@ -7,7 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextReader {
-    public List<String> readLine(String fullFilenameWithPath) throws IOException {
+    private String fullFilenameWithPath;
+
+    public TextReader(String fullFilenameWithPath) {
+        this.fullFilenameWithPath = fullFilenameWithPath;
+    }
+
+    public List<String> readLine() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
         List<String> lines = new ArrayList<String>();
 

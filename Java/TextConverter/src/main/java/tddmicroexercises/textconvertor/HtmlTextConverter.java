@@ -25,7 +25,7 @@ public class HtmlTextConverter
     }
 
     protected List<String> readLines() throws IOException {
-        return new TextReader().readLine(fullFilenameWithPath);
+        return new TextReader(fullFilenameWithPath).readLine();
     }
 
     public String getFilename() {
