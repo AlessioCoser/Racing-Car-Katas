@@ -14,7 +14,7 @@ public class TestAlarm {
 
     @Test
     public void is_off_when_pressure_within_threshold() {
-        Sensor sensor = new SensorWithPressure18();
+        RealSensor sensor = new SensorWithPressure18();
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
@@ -24,7 +24,7 @@ public class TestAlarm {
 
     @Test
     public void is_on_when_pressure_is_out_threshold() {
-        Sensor sensor = new SensorWithPressure0();
+        RealSensor sensor = new SensorWithPressure0();
         Alarm alarm = new Alarm(sensor);
 
         alarm.check();
@@ -32,14 +32,14 @@ public class TestAlarm {
         assertTrue(alarm.isAlarmOn());
     }
 
-    private class SensorWithPressure18 extends Sensor {
+    private class SensorWithPressure18 extends RealSensor {
         @Override
         public double popNextPressurePsiValue() {
             return 18;
         }
     }
 
-    private class SensorWithPressure0 extends Sensor {
+    private class SensorWithPressure0 extends RealSensor {
         @Override
         public double popNextPressurePsiValue() {
             return 0;
