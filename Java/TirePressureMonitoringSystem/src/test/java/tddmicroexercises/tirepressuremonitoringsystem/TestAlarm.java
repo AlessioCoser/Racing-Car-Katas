@@ -22,6 +22,16 @@ public class TestAlarm {
     }
 
     @Test
+    public void new__is_off_when_pressure_within_threshold() {
+        Sensor sensor = new SensorWithPressure18();
+        Alarm alarm = new Alarm(sensor);
+
+        alarm.check();
+
+        assertFalse(alarm.isAlarmOn());
+    }
+
+    @Test
     public void is_on_when_pressure_is_out_threshold() {
         Alarm alarm = new AlarmWithLowPressure();
 
@@ -41,6 +51,13 @@ public class TestAlarm {
         @Override
         protected double pressureValue() {
             return 0;
+        }
+    }
+
+    private class SensorWithPressure18 extends Sensor {
+        @Override
+        public double popNextPressurePsiValue() {
+            return 18;
         }
     }
 }
