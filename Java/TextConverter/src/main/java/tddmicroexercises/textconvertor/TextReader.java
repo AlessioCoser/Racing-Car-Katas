@@ -13,7 +13,7 @@ public class TextReader {
         this.fullFilenameWithPath = fullFilenameWithPath;
     }
 
-    public List<String> readLine() throws IOException {
+    public List<String> readLines() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
         List<String> lines = new ArrayList<String>();
 
