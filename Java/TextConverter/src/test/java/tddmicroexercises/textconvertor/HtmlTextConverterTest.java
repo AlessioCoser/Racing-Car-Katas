@@ -18,13 +18,6 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_empty_string_from_an_empty_file() throws IOException {
-        HtmlTextConverter converter = new EmptyHtmlTextConverter("empty");
-
-        assertEquals("", converter.convertToHtml());
-    }
-
-    @Test
-    public void new_returns_empty_string_from_an_empty_file() throws IOException {
         TextReader reader = new EmptyTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
@@ -36,17 +29,6 @@ public class HtmlTextConverterTest {
         HtmlTextConverter converter = new FullHtmlTextConverter("full");
 
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
-    }
-
-    private class EmptyHtmlTextConverter extends HtmlTextConverter {
-        public EmptyHtmlTextConverter(String path) {
-            super(path);
-        }
-
-        @Override
-        protected List<String> readLines() throws IOException {
-            return new ArrayList<String>();
-        }
     }
 
     private class FullHtmlTextConverter extends HtmlTextConverter {
