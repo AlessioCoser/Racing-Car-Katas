@@ -21,10 +21,26 @@ public class TestAlarm {
         assertFalse(alarm.isAlarmOn());
     }
 
+    @Test
+    public void is_on_when_pressure_is_out_threshold() {
+        Alarm alarm = new AlarmWithLowPressure();
+
+        alarm.check();
+
+        assertTrue(alarm.isAlarmOn());
+    }
+
     private class TestableAlarm extends Alarm {
         @Override
         protected double pressureValue() {
             return 18;
+        }
+    }
+
+    private class AlarmWithLowPressure extends Alarm {
+        @Override
+        protected double pressureValue() {
+            return 0;
         }
     }
 }
