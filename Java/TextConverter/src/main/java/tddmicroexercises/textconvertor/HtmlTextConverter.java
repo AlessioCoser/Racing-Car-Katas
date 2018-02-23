@@ -29,7 +29,7 @@ public class HtmlTextConverter
                 .collect(Collectors.joining("<br />")) + "<br />";
     }
 
-    protected List<String> linesFrom(String text) {
+    private List<String> linesFrom(String text) {
         return asList(text.split("\\n"));
     }
 
