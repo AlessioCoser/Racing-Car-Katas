@@ -5,12 +5,10 @@ import java.util.List;
 
 public class HtmlTextConverter
 {
-    private String fullFilenameWithPath;
     private TextReader textReader;
 
     public HtmlTextConverter(String fullFilenameWithPath)
     {
-        this.fullFilenameWithPath = fullFilenameWithPath;
         textReader = new TextReader(fullFilenameWithPath);
     }
 
@@ -31,6 +29,6 @@ public class HtmlTextConverter
     }
 
     public String getFilename() {
-		return fullFilenameWithPath;
+		return textReader.getFilename();
 	}
 }

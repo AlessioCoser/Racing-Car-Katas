@@ -24,4 +24,8 @@ public class TextReader {
 		}
         return lines;
     }
+
+    public String getFilename() {
+        return fullFilenameWithPath;
+    }
 }
