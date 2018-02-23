@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TextReader {
+public class FileTextReader {
     private String fullFilenameWithPath;
 
-    public TextReader(String fullFilenameWithPath) {
+    public FileTextReader(String fullFilenameWithPath) {
         this.fullFilenameWithPath = fullFilenameWithPath;
     }
 

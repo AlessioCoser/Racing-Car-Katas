@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HtmlTextConverterTest {
     @Test
@@ -18,7 +16,7 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_empty_string_from_an_empty_file() throws IOException {
-        TextReader reader = new EmptyTextReader();
+        FileTextReader reader = new EmptyFileTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
         assertEquals("", converter.convertToHtml());
@@ -26,14 +24,14 @@ public class HtmlTextConverterTest {
 
     @Test
     public void returns_converted_html_from_a_file_with_some_text() throws IOException {
-        TextReader reader = new FullTextReader();
+        FileTextReader reader = new FullFileTextReader();
         HtmlTextConverter converter = new HtmlTextConverter(reader);
 
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
     }
 
-    private class EmptyTextReader extends TextReader {
-        public EmptyTextReader() {
+    private class EmptyFileTextReader extends FileTextReader {
+        public EmptyFileTextReader() {
             super("");
         }
 
@@ -43,8 +41,8 @@ public class HtmlTextConverterTest {
         }
     }
 
-    private class FullTextReader extends TextReader {
-        public FullTextReader() {
+    private class FullFileTextReader extends FileTextReader {
+        public FullFileTextReader() {
             super("");
         }
 

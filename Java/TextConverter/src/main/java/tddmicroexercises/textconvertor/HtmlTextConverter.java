@@ -8,19 +8,19 @@ import static java.util.Arrays.asList;
 
 public class HtmlTextConverter
 {
-    private TextReader textReader;
+    private FileTextReader fileTextReader;
 
     public HtmlTextConverter(String fullFilenameWithPath)
     {
-        this(new TextReader(fullFilenameWithPath));
+        this(new FileTextReader(fullFilenameWithPath));
     }
 
-    public HtmlTextConverter(TextReader reader) {
-        this.textReader = reader;
+    public HtmlTextConverter(FileTextReader reader) {
+        this.fileTextReader = reader;
     }
 
     public String convertToHtml() throws IOException{
-        String text = textReader.read();
+        String text = fileTextReader.read();
 
         if (text.equals("")) return "";
 
@@ -34,6 +34,6 @@ public class HtmlTextConverter
     }
 
     public String getFilename() {
-		return textReader.getFilename();
+		return fileTextReader.getFilename();
 	}
 }
