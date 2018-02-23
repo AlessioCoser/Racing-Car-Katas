@@ -38,8 +38,8 @@ public class HtmlTextConverterTest {
         }
 
         @Override
-        public List<String> readLines() throws IOException {
-            return new ArrayList<String>();
+        public String read() throws IOException {
+            return "";
         }
     }
 
@@ -49,11 +49,8 @@ public class HtmlTextConverterTest {
         }
 
         @Override
-        public List<String> readLines() throws IOException {
-            ArrayList<String> lines = new ArrayList<>();
-            lines.add("first line");
-            lines.add("second 'line'");
-            return lines;
+        public String read() throws IOException {
+            return "first line\nsecond 'line'";
         }
     }
 }

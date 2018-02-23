@@ -16,19 +16,15 @@ public class TextReader {
 
 
     public String read() throws IOException {
-        return readLines().stream().collect(Collectors.joining("\n"));
-    }
-
-    public List<String> readLines() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fullFilenameWithPath));
-        List<String> lines = new ArrayList<String>();
+        String text = "";
 
         String line = reader.readLine();
         while (line != null) {
-			lines.add(line);
-			line = reader.readLine();
-		}
-        return lines;
+            text += line;
+            line = reader.readLine();
+        }
+        return text;
     }
 
     public String getFilename() {
