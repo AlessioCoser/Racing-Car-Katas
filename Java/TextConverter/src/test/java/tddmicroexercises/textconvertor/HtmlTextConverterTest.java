@@ -31,6 +31,14 @@ public class HtmlTextConverterTest {
         assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
     }
 
+    @Test
+    public void new_returns_converted_html_from_a_file_with_some_text() throws IOException {
+        TextReader reader = new FullTextReader();
+        HtmlTextConverter converter = new HtmlTextConverter(reader);
+
+        assertEquals("first line<br />second &quot;line&quot;<br />", converter.convertToHtml());
+    }
+
     private class FullHtmlTextConverter extends HtmlTextConverter {
         public FullHtmlTextConverter(String path) {
             super(path);
@@ -53,6 +61,20 @@ public class HtmlTextConverterTest {
         @Override
         public List<String> readLines() throws IOException {
             return new ArrayList<String>();
+        }
+    }
+
+    private class FullTextReader extends TextReader {
+        public FullTextReader() {
+            super("");
+        }
+
+        @Override
+        public List<String> readLines() throws IOException {
+            ArrayList<String> lines = new ArrayList<>();
+            lines.add("first line");
+            lines.add("second 'line'");
+            return lines;
         }
     }
 }
